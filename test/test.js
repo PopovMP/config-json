@@ -29,7 +29,7 @@ function finish() {
 
 // Tests start
 
-const configJson = require("../index.js").init("./test");
+const configJson = require("../index.js").init(__dirname);
 
 test( ()=> configJson.get("key")    === "value"  , "Wrong value" );
 test( ()=> configJson.get("answer") === 42       , "Wrong value" );
