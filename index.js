@@ -12,8 +12,9 @@ let configLocal = {};
  *
  * @function init
  *
- * @param {string} basePath
- * @return { { get: get } };
+ * @param { string } basePath
+ *
+ * @return { { get } };
  */
 function init(basePath) {
     if (!isInit) {
@@ -32,7 +33,8 @@ function init(basePath) {
  * @function get
  *
  * @param  { string } key
- * @return { any } value
+ *
+ * @return { any }
  */
 function get(key) {
     const val = configLocal.hasOwnProperty(key)
@@ -50,7 +52,8 @@ function get(key) {
 /**
  * Clones a value
  *
- * @param { any | null | undefined } source
+ * @param { any } source
+ *
  * @return { any }
  */
 function cloneObject(source) {

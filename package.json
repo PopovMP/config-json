@@ -1,6 +1,6 @@
 {
-  "name": "config-json",
-  "version": "1.0.0",
+  "name": "@popovmp/config-json",
+  "version": "1.0.1",
   "description": "Reads configs from a config.json file.",
   "main": "index.js",
   "author": "Popov MP <info@forexsb.com>",
@@ -8,9 +8,6 @@
   "homepage": "https://github.com/popovmp/config-json#readme",
   "scripts": {
     "test": "node ./test/test.js"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/@popovmp"
   },
   "repository": {
     "type": "git",

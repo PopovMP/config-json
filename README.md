@@ -29,7 +29,8 @@ The records from `config-local.json` overrides the records of `config.json`.
  * @function init
  *
  * @param {string} basePath
- * @return { { get: get } };
+ *
+ * @return { { get } };
  */
 configJson.init(basePath);
 
@@ -43,6 +44,7 @@ configJson.init(basePath);
  * @function get
  *
  * @param  { string } key
+ *
  * @return { any } value
  */
 configJson.get(key);
