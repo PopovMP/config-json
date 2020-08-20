@@ -13,11 +13,41 @@ const value = configJson.get("key");
 
 ## Usage
 
-   The `config-json` must be initialized with the path to the folder, which contains the config files.
-   
-   `config-json` reads two files: `config.json` and `config-local.json`. The first file must exist.
-   
-   The records from `config-local.json` overrides the records of `config.json`.
+The `config-json` must be initialized with the path to the folder, which contains the config files.
+
+`config-json` reads two files: `config.json` and `config-local.json`. The first file must exist.
+
+The records from `config-local.json` overrides the records of `config.json`.
+
+`config-json` exports two methods:
+
+
+```javascript
+/**
+ * Reads the config file at startup.
+ *
+ * @function init
+ *
+ * @param {string} basePath
+ * @return { { get: get } };
+ */
+configJson.init(basePath);
+
+````
+
+
+```javascript
+/**
+ * Gets a value from the config file
+ *
+ * @function get
+ *
+ * @param  { string } key
+ * @return { any } value
+ */
+configJson.get(key);
+
+````
 
 ## License
 
