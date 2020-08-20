@@ -1,6 +1,6 @@
 # A simple Config helper for nodejs
 
-`config-json` is very simple and zero dependencies library for reading config files in JSON format.
+**config-json** is very simple and zero dependencies library for reading config files in JSON format.
 
 Homepage: https://github.com/popovmp/config-json
 
@@ -11,16 +11,23 @@ const configJson = require("config-json").init(__dirname);
 const value = configJson.get("key");
 ````
 
+## Installation
+
+````
+npm install @popovmp/config-json
+````
+
 ## Usage
 
-The `config-json` must be initialized with the path to the folder, which contains the config files.
+**config-json** must be initialized with the path to the folder, which contains the config files.
+It is a good idea to set the base path relative to `__dirname`.
 
-`config-json` reads two files: `config.json` and `config-local.json`. The first file must exist.
+**config-json** reads two files: `config.json` and `config-local.json`.
+The first file must exist. The second is optional.
 
 The records from `config-local.json` overrides the records of `config.json`.
 
-`config-json` exports two methods:
-
+**config-json** exports two methods:
 
 ```javascript
 /**
