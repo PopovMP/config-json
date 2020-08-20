@@ -2,14 +2,14 @@
 
 `config-json` is very simple and zero dependencies library for reading config files in JSON format.
 
-Homepage: https://github.com/PopovMP/config-json
+Homepage: https://github.com/popovmp/config-json
 
 ## Synopsis
 
-    ```javascript
-    const configJson = require("config-json").init(__dirname);
-    const value = configJson.get("key");
-    ````
+```javascript
+const configJson = require("config-json").init(__dirname);
+const value = configJson.get("key");
+````
 
 ## Usage
 
