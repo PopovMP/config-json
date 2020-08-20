@@ -1,5 +1,5 @@
 {
-  "name": "config-json",
+  "name": "@PopovMP/config-json",
   "version": "1.0.0",
   "description": "Reads configs from a config.json file.",
   "main": "index.js",
@@ -7,8 +7,7 @@
     "test": "node ./test/test.js"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/PopovMP",
-    "name": "@PopovMP/config-json"
+    "registry": "https://npm.pkg.github.com/@PopovMP",
   },
   "repository": {
     "type": "git",
