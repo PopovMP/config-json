@@ -1,27 +1,27 @@
 {
-  "name": "@PopovMP/config-json",
+  "name": "config-json",
   "version": "1.0.0",
   "description": "Reads configs from a config.json file.",
   "main": "index.js",
+  "author": "Popov MP <info@forexsb.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/popovmp/config-json#readme",
   "scripts": {
     "test": "node ./test/test.js"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/@PopovMP",
+    "registry": "https://npm.pkg.github.com/@popovmp"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/PopovMP/config-json.git"
+    "url": "https://github.com/popovmp/config-json.git"
   },
   "keywords": [
     "config",
     "nodejs",
     "json"
   ],
-  "author": "Popov MP <info@forexsb.com>",
-  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/PopovMP/config-json/issues"
-  },
-  "homepage": "https://github.com/PopovMP/config-json#readme"
+    "url": "https://github.com/popovmp/config-json/issues"
+  }
 }
