@@ -7,12 +7,12 @@
     "test": "node ./test/test.js"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/",
+    "registry": "https://npm.pkg.github.com/popovmp",
     "name": "@popovmp/config-json"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/popovmp/config-json.git"
+    "url": "https://github.com/popovmp/config-json.git"
   },
   "keywords": [
     "config",
