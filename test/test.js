@@ -1,40 +1,78 @@
 "use strict"
 
-let index   = 0;
-let success = 0;
-let failed  = 0;
-let crashed = 0;
+const configJson = require("../index.js");
+configJson.init(__dirname);
 
-function test(test, message) {
-    index++;
-    
-    try {
-        const ans = test();
-        if (ans) {
-            console.log(index + ". OK");
-            success++;
-        } else {
-            console.error(index + ". Failed: " + message);
-            failed++;
-        }
-    } catch (e) {
-        console.error(index + ". Crashed: " + e.message);
-        crashed++;
-    }
-}
+test("Have an `init` function", () =>
+    typeof configJson.init === "function"
+);
 
-function finish() {
-    console.log(`Success: ${success} of ${index}, Failed: ${failed}, Crashed: ${crashed}`);
-}
+test("Have a `get` function", () =>
+    typeof configJson.get === "function"
+);
 
-// Tests start
+test("Get a string value", () =>
+    configJson.get("key") === "value"
+);
 
-const configJson = require("../index.js").init(__dirname);
+test("Get a numeric value", () =>
+    configJson.get("answer") === 42
+);
 
-test( ()=> configJson.get("key")    === "value"  , "Wrong value" );
-test( ()=> configJson.get("answer") === 42       , "Wrong value" );
-test( ()=> configJson.get("foo")    === undefined, "Wrong value" );
+test("Get true", () =>
+    configJson.get("yes") === true
+);
+
+test("Get false", () =>
+    configJson.get("no") === false
+);
+
+test("Get null", () =>
+    configJson.get("nil") === null
+);
+
+test("Get a copy of an array", () =>
+    configJson.get("arr")[0] = 54 && configJson.get("arr")[0] === 3
+);
+
+test("Get a copy of an object", () =>
+    configJson.get("obj")["a"] = 54 && configJson.get("obj")["a"] === 3
+);
+
+test("Requesting a missing value prints an error", () =>
+    configJson.get("foo") === undefined
+);
 
 // Tests end
 
-finish();
+done();
+
+function test(message, test) {
+    if (!global.__testResults) {
+        global.__testResults = {index: 0, success: 0, fail: 0};
+    }
+
+    global.__testResults.index++;
+
+    try {
+        const ans = test();
+        if (ans) {
+            console.log(global.__testResults.index + ". ✅ " + message);
+            global.__testResults.success++;
+        } else {
+            console.error(global.__testResults.index + ". ❌ " + message);
+            global.__testResults.fail++;
+        }
+    } catch (e) {
+        console.error(global.__testResults.index + ". ❌ " + message + ": " + e.message);
+        global.__testResults.fail++;
+    }
+}
+
+function done() {
+    const message = `Success: ${global.__testResults.success}` +
+        ` of ${global.__testResults.index}` +
+        `, Failed: ${global.__testResults.fail}`;
+    delete global.__testResults;
+    console.log(message);
+}

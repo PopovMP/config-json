@@ -1,4 +1,13 @@
 {
-    "key": "value",
-    "answer": 13 
+  "key": "value",
+  "answer": 13,
+  "nil": null,
+  "no": false,
+  "yes": true,
+  "arr": [
+    3
+  ],
+  "obj": {
+    "a": 3
+  }
 }
