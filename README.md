@@ -9,8 +9,14 @@ Homepage: https://github.com/popovmp/config-json
 
 ```javascript
 // make a config.json file with your settings
+// init the config in index.js
 const configJson = require("config-json").init(__dirname);
 const value = configJson.get("key");
+
+// in the other files
+const configJson = require("config-json");
+const value = configJson.get("key");
+ 
 ````
 
 ## Installation
@@ -23,6 +29,8 @@ npm install @popovmp/config-json
 
 **config-json** must be initialized with the path to the folder, which contains the config files.
 It is a good idea to set the base path relative to `__dirname`.
+
+You have to initialize the config lib only once. It is best to do it in the application main script `index.js` or `app.js`. 
 
 **config-json** reads two files: `config.json` and `config-local.json`.
 The first file must exist. The second one is optional.
