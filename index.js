@@ -10,11 +10,8 @@ let configLocal = {};
 /**
  * Reads the config file at startup.
  *
- * @function init
- *
- * @param { string } basePath
- *
- * @return { { get } };
+ * @param  { string  } basePath
+ * @return { { get } }
  */
 function init(basePath) {
     if (!isInit) {
@@ -30,11 +27,8 @@ function init(basePath) {
 /**
  * Gets a value from the config file
  *
- * @function get
- *
  * @param  { string } key
- *
- * @return { any }
+ * @return { any    }
  */
 function get(key) {
     const val = configLocal.hasOwnProperty(key)
@@ -52,8 +46,7 @@ function get(key) {
 /**
  * Clones a value
  *
- * @param { any } source
- *
+ * @param  { any } source
  * @return { any }
  */
 function cloneObject(source) {
@@ -77,7 +70,8 @@ function cloneObject(source) {
 /**
  * Reads the config files
  *
- * @param { string } basePath
+ * @param  { string } basePath
+ * @return { void   }
  */
 function initConfig(basePath) {
     const configPath = path.join(basePath, "config.json");
