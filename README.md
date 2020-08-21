@@ -14,9 +14,9 @@ const value = configJson.get("key");
 
 ## Installation
 
-````
+```
 npm install @popovmp/config-json
-````
+```
 
 ## Usage
 
@@ -28,19 +28,43 @@ The first file must exist. The second is optional.
 
 The records from `config-local.json` overrides the records of `config.json`.
 
+Hav a `config.json` file as follows:
+
+```json
+{
+  "key": 42,
+  "arr": [1, 2]
+}
+```
+
 ```javascript
 const configJson = require("config-json");
 configJson.init(__dirname);
 
-const value = configJson.get("key");
+const value = configJson.get("key"); // gets 42
 ```
 
 or
 
 ```javascript
 const configJson = require("config-json").init(__dirname);
-const value = configJson.get("key");
+
+const value = configJson.get("key"); // gets 42
 ```
+
+It is a good idea to have separate teh settings in two config files:
+  - `config.json` file with your public settings
+  - `config-local.json` with your private settings. it can be put in `.gitignore`.
+
+**config-json** clones the provided values. It guarantees that the values cannto be changed from the code.
+
+```javascript
+const arr1 = configJson.get("arr");
+arr1[0] = 42;
+
+const arr2 = configJson.get("arr");
+console.log(arr2[0]); // => 1;
+```  
 
 ## Methods
 
