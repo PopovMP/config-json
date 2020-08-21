@@ -7,6 +7,7 @@ Homepage: https://github.com/popovmp/config-json
 ## Synopsis
 
 ```javascript
+// make a config.json file with your settings
 const configJson = require("config-json").init(__dirname);
 const value = configJson.get("key");
 ````
@@ -27,35 +28,41 @@ The first file must exist. The second is optional.
 
 The records from `config-local.json` overrides the records of `config.json`.
 
+```javascript
+const configJson = require("config-json");
+configJson.init(__dirname);
+
+const value = configJson.get("key");
+```
+
+or
+
+```javascript
+const configJson = require("config-json").init(__dirname);
+const value = configJson.get("key");
+```
+
+## Methods
+
 **config-json** exports two methods:
 
 ```javascript
 /**
  * Reads the config file at startup.
- *
- * @function init
- *
- * @param {string} basePath
- *
+ * @param {string} basePath - dircetory that conatins config.js
  * @return { { get } };
  */
 configJson.init(basePath);
 
 ````
 
-
 ```javascript
 /**
  * Gets a value from the config file
- *
- * @function get
- *
  * @param  { string } key
- *
  * @return { any } value
  */
 configJson.get(key);
-
 ````
 
 ## License
