@@ -1,7 +1,11 @@
 "use strict"
 
+const {init, test, done} = require("./micro-tester");
+
 const config = require("../index.js");
 config.init(__dirname);
+
+init("Test config-json");
 
 test("Have an `init` function", () =>
     typeof config.init === "function"
@@ -46,38 +50,4 @@ test("Get a missing value", () =>
     config.get("foo") === undefined
 );
 
-// Tests end
-
 done();
-
-function test(message, test) {
-    if (!global.__testResults) {
-        global.__testResults = {index: 0, passed: 0, failed: 0};
-    }
-
-    __testResults.index++;
-
-    try {
-        const ans = test();
-        if (ans) {
-            console.log(__testResults.index + ". ✅ " + message);
-            __testResults.passed++;
-        } else {
-            console.error(__testResults.index + ". ❌ " + message);
-            __testResults.failed++;
-        }
-    } catch (e) {
-        console.error(__testResults.index + ". ❌ " + message + ": " + e.message);
-        __testResults.failed++;
-    }
-}
-
-function done() {
-    console.log(`Passed: ${__testResults.passed} of ${__testResults.index}, Failed: ${__testResults.failed}`);
-    const failed = __testResults.failed;
-    delete global.__testResults;
-
-    if (failed) {
-        throw new Error("Tests failed: " + failed);
-    }
-}
