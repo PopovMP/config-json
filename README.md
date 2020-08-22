@@ -8,15 +8,14 @@ Homepage: https://github.com/popovmp/config-json
 ## Synopsis
 
 ```javascript
-// make a config.json file with your settings
-// init the config in index.js
-const configJson = require("config-json").init(__dirname);
-const value = configJson.get("key");
+// Make a config.json file with your settings
+// Init `config-json` in your index.js
+const config = require("config-json").init(__dirname);
+const value = config.get("key");
 
-// in the other files
-const configJson = require("config-json");
-const value = configJson.get("key");
- 
+// Use it in your other files
+const config = require("config-json");
+const value = config.get("key");
 ````
 
 ## Installation
@@ -37,7 +36,7 @@ The first file must exist. The second one is optional.
 
 The records from `config-local.json` overrides the records of `config.json`.
 
-Have a `config.json` file as follows:
+Example `config.json` file as follows:
 
 ```json
 {
@@ -45,7 +44,8 @@ Have a `config.json` file as follows:
   "arr": [1, 2]
 }
 ```
-Have a `config-local.json` file with your private settings as follows:
+
+Example `config-local.json` file with your private settings as follows:
 
 ```json
 {
@@ -54,34 +54,33 @@ Have a `config-local.json` file with your private settings as follows:
 ```
 
 ```javascript
-const configJson = require("config-json");
-configJson.init(__dirname);
+const config = require("config-json");
+config.init(__dirname);
 
-const value  = configJson.get("key");    // gets 42
-const secret = configJson.get("secret"); // gets "vim rocks!"
+const value  = config.get("key");    // gets 42 (read from config.json)
+const secret = config.get("secret"); // gets "vim rocks!" (read from config-local.json)
 ```
 
 or
 
 ```javascript
-const configJson = require("config-json").init(__dirname);
+const config = require("config-json").init(__dirname);
 
-const value  = configJson.get("key");    // gets 42
-const secret = configJson.get("secret"); // gets "vim rocks!"
+const value  = config.get("key");    // gets 42
+const secret = config.get("secret"); // gets "vim rocks!"
 ```
 
-It is a good idea to separate the settings in two config files:
+If you have private or local settings, you can separate them in two config files:
   - `config.json` file with your public settings
   - `config-local.json` with your private settings. It can be put in `.gitignore` to prevent it from publishing.
-
 
 **config-json** clones the provided values. It guarantees that the values cannot be changed from the code.
 
 ```javascript
-const arr1 = configJson.get("arr");
+const arr1 = config.get("arr");
 arr1[0] = 42;
 
-const arr2 = configJson.get("arr");
+const arr2 = config.get("arr");
 console.log(arr2[0]); // => 1;
 ```  
 
@@ -95,7 +94,7 @@ console.log(arr2[0]); // => 1;
  * @param {string} basePath - dircetory that conatins config.js
  * @return { { get } };
  */
-configJson.init(basePath);
+config.init(basePath);
 
 ````
 
@@ -105,7 +104,7 @@ configJson.init(basePath);
  * @param  { string } key
  * @return { any } value
  */
-configJson.get(key);
+config.get(key);
 ````
 
 ## License
