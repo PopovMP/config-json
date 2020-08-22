@@ -1,10 +1,13 @@
 "use strict";
 
-const stats = {
-    index: 0,
-    passed: 0,
-    failed: 0
-};
+/**
+ * Testing stats
+ * @type {object}
+ * @property {number} index
+ * @property {number} passed
+ * @property {number} failed
+ */
+const stats = {};
 
 /**
  * Resets the stats and shows teh message
@@ -12,17 +15,14 @@ const stats = {
  */
 function init(message) {
     console.log(message);
-
-    stats.index = 0;
-    stats.passed = 0;
-    stats.failed = 0;
+    resetStats();
 }
 
 /**
  * Performs a test
  *
- * @param { string } message
- * @param { function() } testFunction -
+ * @param {string} message
+ * @param {function} testFunction - When return: truthy - test pass, faulty - test fails
  */
 function test(message, testFunction) {
     stats.index++;
@@ -51,9 +51,17 @@ function done() {
     console.log(`Passed: ${stats.passed} of ${stats.index}, Failed: ${stats.failed}`);
     const failed = stats.failed;
 
+    resetStats();
+
     if (failed) {
         throw new Error("Tests failed: " + failed);
     }
+}
+
+function resetStats() {
+    stats.index  = 0;
+    stats.passed = 0;
+    stats.failed = 0;
 }
 
 module.exports = {
