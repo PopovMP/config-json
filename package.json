@@ -8,7 +8,7 @@
   "homepage": "https://github.com/popovmp/config-json",
   "scripts": {
     "test": "node ./test/index.test.js",
-    "prepublishOnly": "test"
+    "prepublishOnly": "npm test"
   },
   "repository": {
     "type": "git",
