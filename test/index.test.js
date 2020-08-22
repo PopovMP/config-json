@@ -1,6 +1,6 @@
 "use strict"
 
-const {init, test, done} = require("./micro-tester");
+const {init, test, done} = require("@popovmp/micro-tester");
 
 const config = require("../index.js");
 config.init(__dirname);

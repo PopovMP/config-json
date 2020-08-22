@@ -1,6 +1,6 @@
 # A simple Config helper for nodejs
 
-**config-json** is very simple, zero dependencies library for reading config files in JSON format.
+**config-json** is a very simple helper for reading config files in JSON format.
 It reads private setting from a separate local config file.
 
 Homepage: https://github.com/popovmp/config-json
@@ -83,6 +83,17 @@ arr1[0] = 42;
 const arr2 = config.get("arr");
 console.log(arr2[0]); // => 1;
 ```  
+
+## Logging errors
+
+**config-json** uses the **micro-logger** ( https://www.npmjs.com/package/@popovmp/micro-logger ) package for logging errors.
+
+When **micro-logger** is not initialized, it logs in the console.
+If you want to log the errors in a log file, init **micro-logger** in your `index.js` as follows;
+
+```javascript
+const logger = require("micro-logger").init("./logs/log.txt");
+```
 
 ## Methods
 

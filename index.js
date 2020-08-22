@@ -3,6 +3,8 @@
 const fs = require("fs");
 const path = require("path");
 
+const logger = require("@popovmp/micro-logger");
+
 let isInit = false;
 let config = {};
 let configLocal = {};
@@ -36,7 +38,7 @@ function get(key) {
         : config[key];
 
     if (typeof val === "undefined") {
-        console.error("Requested an undefined key: " + key);
+        logger.error("Requested an undefined key: " + key, "config-json::get");
         return undefined;
     }
 
@@ -79,7 +81,7 @@ function initConfig(basePath) {
         const configText = fs.readFileSync(configPath, "utf8");
         config = JSON.parse(configText);
     } else {
-        console.error("No config.json found at: " + basePath);
+        logger.error("No config.json found at: " + basePath, "config-json::init");
     }
 
     const configLocalPath = path.join(basePath, "config-local.json");
