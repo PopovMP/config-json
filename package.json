@@ -10,7 +10,7 @@
     "@popovmp/micro-logger": "^1.2.1"
   },
   "devDependencies": {
-    "@popovmp/micro-tester": "^1.0.1"
+    "@popovmp/micro-tester": "^2.0.0"
   },
   "scripts": {
     "test": "node ./test/index.test.js",
