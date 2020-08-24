@@ -1,6 +1,6 @@
 {
   "name": "@popovmp/config-json",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Reads configs from a config.json file.",
   "main": "index.js",
   "author": "Popov MP <info@forexsb.com>",
