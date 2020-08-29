@@ -1,21 +1,21 @@
 # A simple Config helper for nodejs
 
-**config-json** is a very simple helper for reading config files in JSON format.
+**config-json** is a very simple helper for reading config files in a JSON format.
 It reads private setting from a separate local config file.
 
-Homepage: https://github.com/popovmp/config-json
+Homepage: https://github.com/popovmp/config-json#readme
 
 ## Synopsis
 
 ```javascript
 // Make a config.json file with your settings
 // Init `config-json` in your index.js
-const config = require("config-json").init(__dirname);
-const value = config.get("key");
+const config = require('config-json').init(__dirname);
+const value = config.get('key');
 
 // Use it in your other files
-const config = require("config-json");
-const value = config.get("key");
+const config = require('config-json');
+const value = config.get('key');
 ````
 
 ## Installation
@@ -54,20 +54,20 @@ Example `config-local.json` file with your private settings as follows:
 ```
 
 ```javascript
-const config = require("config-json");
+const config = require('config-json');
 config.init(__dirname);
 
-const value  = config.get("key");    // gets 42 (read from config.json)
-const secret = config.get("secret"); // gets "vim rocks!" (read from config-local.json)
+const value  = config.get('key');    // gets 42 (read from config.json)
+const secret = config.get('secret'); // gets 'vim rocks!' (read from config-local.json)
 ```
 
 or
 
 ```javascript
-const config = require("config-json").init(__dirname);
+const config = require('config-json').init(__dirname);
 
-const value  = config.get("key");    // gets 42
-const secret = config.get("secret"); // gets "vim rocks!"
+const value  = config.get('key');    // gets 42
+const secret = config.get('secret'); // gets 'vim rocks!'
 ```
 
 If you have private or local settings, you can separate them in two config files:
@@ -77,10 +77,10 @@ If you have private or local settings, you can separate them in two config files
 **config-json** clones the provided values. It guarantees that the values cannot be changed from the code.
 
 ```javascript
-const arr1 = config.get("arr");
+const arr1 = config.get('arr');
 arr1[0] = 42;
 
-const arr2 = config.get("arr");
+const arr2 = config.get('arr');
 console.log(arr2[0]); // => 1;
 ```  
 
@@ -92,7 +92,7 @@ When **micro-logger** is not initialized, it logs in the console.
 If you want to log the errors in a log file, init **micro-logger** in your `index.js` as follows;
 
 ```javascript
-const logger = require("micro-logger").init("./logs/log.txt");
+const logger = require('micro-logger').init('./logs/log.txt');
 ```
 
 ## Methods
@@ -105,8 +105,7 @@ const logger = require("micro-logger").init("./logs/log.txt");
  * @param {string} basePath - dircetory that conatins config.js
  * @return { { get } };
  */
-config.init(basePath);
-
+function init(basePath) { }
 ````
 
 ```javascript
@@ -115,7 +114,7 @@ config.init(basePath);
  * @param  { string } key
  * @return { any } value
  */
-config.get(key);
+function get(key) { }
 ````
 
 ## License
