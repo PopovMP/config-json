@@ -1,19 +1,19 @@
 {
   "name": "@popovmp/config-json",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "Reads configs from a config.json file.",
   "main": "index.js",
   "author": "Popov MP <info@forexsb.com>",
   "license": "MIT",
   "homepage": "https://github.com/popovmp/config-json",
   "dependencies": {
-    "@popovmp/micro-logger": "^1.3.1"
+    "@popovmp/micro-logger": "^1.3.2"
   },
   "devDependencies": {
-    "@popovmp/micro-tester": "^2.2.0"
+    "@popovmp/mocha-tiny": "^1.1.0"
   },
   "scripts": {
-    "test": "micro-tester",
+    "test": "mocha-tiny",
     "prepublishOnly": "npm test"
   },
   "repository": {
