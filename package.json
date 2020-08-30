@@ -10,7 +10,7 @@
     "@popovmp/micro-logger": "^1.3.2"
   },
   "devDependencies": {
-    "@popovmp/mocha-tiny": "^1.1.0"
+    "@popovmp/mocha-tiny": "^1.2.0"
   },
   "scripts": {
     "test": "mocha-tiny",
