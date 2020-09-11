@@ -3,43 +3,42 @@
 const { strictEqual  } = require('assert');
 const { describe, it } = require('@popovmp/mocha-tiny');
 
-const path   = require("path");
-const config = require("../index.js").init( path.join(__dirname, '/data') );
+const path = require("path");
+const { configGet } = require("../index.js").init( path.join(__dirname, '/data') );
 
 describe('config-json behavior', () => {
 
     it("Get a string", () => {
-        strictEqual(config.get("key"), "value");
+        strictEqual(configGet("key"), "value");
     });
 
     it("Get a number", () => {
-        strictEqual(config.get("answer"), 42);
+        strictEqual(configGet("answer"), 42);
     });
 
     it("Get true", () => {
-        strictEqual(config.get("yes"), true);
+        strictEqual(configGet("yes"), true);
     });
 
     it("Get false", () => {
-        strictEqual(config.get("no"), false);
+        strictEqual(configGet("no"), false);
     });
 
     it("Get null", () => {
-        strictEqual(config.get("nil"), null);
+        strictEqual(configGet("nil"), null);
     });
 
     it("Get a copy of an array", () => {
-        config.get("arr")[0] = 54;
-        strictEqual(config.get("arr")[0], 3);
+        configGet("arr")[0] = 54;
+        strictEqual(configGet("arr")[0], 3);
     });
 
     it("Get a copy of an object", () => {
-        config.get("obj")["a"] = 54;
-        strictEqual(config.get("obj")["a"], 3);
+        configGet("obj")["a"] = 54;
+        strictEqual(configGet("obj")["a"], 3);
     });
 
     it("Get a missing value", () => {
-        // It prints an error to the console and returns undefined.
-        strictEqual(config.get("foo"), undefined);
+        strictEqual(configGet("foo"), undefined);
     });
 });

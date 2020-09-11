@@ -1,19 +1,17 @@
 "use strict";
 
-const fs = require("fs");
+const fs   = require("fs");
 const path = require("path");
 
-const logger = require("@popovmp/micro-logger");
-
-let isInit = false;
-let config = {};
+let isInit      = false;
+let config      = {};
 let configLocal = {};
 
 /**
  * Reads the config file at startup.
  *
  * @param  { string  } basePath
- * @return { { get } }
+ * @return { { get:function(string), configGet:function(string) } }
  */
 function init(basePath) {
     if (!isInit) {
@@ -23,6 +21,7 @@ function init(basePath) {
 
     return {
         get,
+        configGet: get,
     };
 }
 
@@ -36,11 +35,6 @@ function get(key) {
     const val = configLocal.hasOwnProperty(key)
         ? configLocal[key]
         : config[key];
-
-    if (typeof val === "undefined") {
-        logger.error("Requested an undefined key: " + key, "config-json::get");
-        return undefined;
-    }
 
     return cloneObject(val);
 }
@@ -80,8 +74,6 @@ function initConfig(basePath) {
     if (fs.existsSync(configPath)) {
         const configText = fs.readFileSync(configPath, "utf8");
         config = JSON.parse(configText);
-    } else {
-        logger.error("No config.json found at: " + basePath, "config-json::init");
     }
 
     const configLocalPath = path.join(basePath, "config-local.json");
@@ -92,6 +84,7 @@ function initConfig(basePath) {
 }
 
 module.exports = {
-    get,
     init,
+    get,
+    configGet: get,
 };

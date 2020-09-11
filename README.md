@@ -1,7 +1,7 @@
 # A simple Config helper for nodejs
 
 **config-json** is a very simple helper for reading config files in a JSON format.
-It reads private setting from a separate local config file.
+It can read private setting from a separate local config file.
 
 Homepage: https://github.com/popovmp/config-json#readme
 
@@ -9,13 +9,18 @@ Homepage: https://github.com/popovmp/config-json#readme
 
 ```javascript
 // Make a config.json file with your settings
-// Init `config-json` in your index.js
-const config = require('config-json').init(__dirname);
+
+// Initialise config-json once in your index.js
+const config = require('@popovmp/config-json').init(__dirname);
 const value = config.get('key');
 
 // Use it in your other files
-const config = require('config-json');
+const config = require('@popovmp/config-json');
 const value = config.get('key');
+
+// You can also use the configGet exposed method
+const { configGet } = require('@popovmp/config-json');
+const value = configGet('key');
 ````
 
 ## Installation
@@ -54,7 +59,7 @@ Example `config-local.json` file with your private settings as follows:
 ```
 
 ```javascript
-const config = require('config-json');
+const config = require('@popovmp/config-json');
 config.init(__dirname);
 
 const value  = config.get('key');    // gets 42 (read from config.json)
@@ -64,36 +69,25 @@ const secret = config.get('secret'); // gets 'vim rocks!' (read from config-loca
 or
 
 ```javascript
-const config = require('config-json').init(__dirname);
+const { configGet } = require('@popovmp/config-json').init(__dirname);
 
-const value  = config.get('key');    // gets 42
-const secret = config.get('secret'); // gets 'vim rocks!'
+const value  = configGet('key');    // gets 42
+const secret = configGet('secret'); // gets 'vim rocks!'
 ```
 
-If you have private or local settings, you can separate them in two config files:
+If you have private or local settings, you can separate them in two configs files:
   - `config.json` file with your public settings
   - `config-local.json` with your private settings. It can be put in `.gitignore` to prevent it from publishing.
 
 **config-json** clones the provided values. It guarantees that the values cannot be changed from the code.
 
 ```javascript
-const arr1 = config.get('arr');
+const arr1 = configGet('arr');
 arr1[0] = 42;
 
-const arr2 = config.get('arr');
+const arr2 = configGet('arr');
 console.log(arr2[0]); // => 1;
 ```  
-
-## Logging errors
-
-**config-json** uses the **micro-logger** ( https://www.npmjs.com/package/@popovmp/micro-logger ) package for logging errors.
-
-When **micro-logger** is not initialized, it logs in the console.
-If you want to log the errors in a log file, init **micro-logger** in your `index.js` as follows;
-
-```javascript
-const logger = require('micro-logger').init('./logs/log.txt');
-```
 
 ## Methods
 
@@ -103,7 +97,7 @@ const logger = require('micro-logger').init('./logs/log.txt');
 /**
  * Reads the config file at startup.
  * @param {string} basePath - dircetory that conatins config.js
- * @return { { get } };
+ * @return { {get, configGet} };
  */
 function init(basePath) { }
 ````
@@ -115,6 +109,15 @@ function init(basePath) { }
  * @return { any } value
  */
 function get(key) { }
+```
+
+```javascript
+/**
+ * Gets a value from the config file
+ * @param  { string } key
+ * @return { any } value
+ */
+function configGet(key) { }
 ````
 
 ## License
