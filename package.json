@@ -7,7 +7,7 @@
   "license": "MIT",
   "homepage": "https://github.com/popovmp/config-json",
   "devDependencies": {
-    "@popovmp/mocha-tiny": "^1.2.0"
+    "@popovmp/mocha-tiny": "^1.3.1"
   },
   "scripts": {
     "test": "mocha-tiny",
@@ -23,5 +23,6 @@
   ],
   "bugs": {
     "url": "https://github.com/popovmp/config-json/issues"
-  }
+  },
+  "dependencies": {}
 }
